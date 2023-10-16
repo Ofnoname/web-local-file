@@ -2,9 +2,11 @@
 
 ## Introduction
 
-When making a file and creating a link for it on the web page, the most common method is to create a URL for a Blob. However, this link will become invalid after a page refresh. To ensure the link remains valid even after a refresh, we must rely on local storage.
+On web pages, when we want to convert data to a file and create a link for it, the most common method is to create a URL for a Blob. However, this link will become invalid after the page refreshes. If I want to create a permanently valid link, we must rely on local storage.
 
-The `webLocalFile.js` allows you to store files in local storage and then generate a permanently valid link. Access to this link is intercepted by the Service Worker, which then returns the file content. This way, even if the page is refreshed, the link remains valid. The link appears as if the file is stored on the server side.
+`webLocalFile.js` allows you to store files in local storage, then generate a permanently valid link. When this link is accessed, the Service Worker will intercept it and return the file content. Thus, the link remains valid even if the page refreshes. This link looks as if the file is stored on the server side.
+
+This tool uses IndexedDB for local storage, and Service Worker to intercept requests. Most modern browsers support both features.
 
 ```javascript
 import { wlf } from './webLocalFile.js';
@@ -17,10 +19,8 @@ const url = await w.save(file, 'hello.txt')
 
 console.log(url) // example.com/wlf/hello.txt
 
-/* You can open or 'fetch example.com/wlf/hello.txt' now */
+/* You can open or fetch 'example.com/wlf/hello.txt' now */
 ```
-
-To understand the underlying mechanism, it's recommended to review the source code. The library leverages the capabilities of IndexedDB for local storage and Service Worker for intercepting requests.
 
 ## 介绍
 
