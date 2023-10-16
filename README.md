@@ -86,7 +86,7 @@ fileManager.delete('myFileName').then(() => {
 
 ### Method: `read(fileName)`
 
-Reads a file from local storage.
+Reads a file from local storage by file name.
 
 - **Parameters:**
     - `fileName`: The name of the file to be read.
@@ -102,7 +102,7 @@ fileManager.read('myFileName').then(fileContent => {
 
 ### Method: `estimate()`
 
-Estimates the storage usage and availability.
+Estimates the storage usage and availability. It directly calls the [StorageManager.estimate()](https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/estimate) method.
 
 - **Returns:** A promise that resolves to an object containing usage details.
 

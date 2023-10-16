@@ -78,7 +78,7 @@ export class wlf {
                 const getRequest = tx.objectStore('files').get(fileName);
 
                 getRequest.onerror = () => reject(getRequest.error);
-                getRequest.onsuccess = () => resolve(getRequest.result);
+                getRequest.onsuccess = () => resolve(getRequest.result.file);
             });
         } catch (error) {
             throw new Error(`Reading file failed: ${error.message}`);
